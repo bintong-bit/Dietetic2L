@@ -1,0 +1,32 @@
+def calculate_bmr(weight, height, age, gender):
+    if gender == 'male':
+        bmr = 66 + (13.7 * weight) + (5 * height) - (6.8 * age)
+    else:
+        bmr = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age)
+    return bmr
+
+def calculate_tdee(bmr, activity_level):
+    if activity_level == 'sedentary':
+        tdee = bmr * 1.2
+    elif activity_level == 'lightly_active':
+        tdee = bmr * 1.375
+    elif activity_level == 'moderately_active':
+        tdee = bmr * 1.55
+    elif activity_level == 'very_active':
+        tdee = bmr * 1.725
+    else:
+        tdee = bmr * 1.9
+    return tdee
+
+weight = float(input("Enter your weight in kilograms: "))
+height = float(input("Enter your height in centimeters: "))
+age = int(input("Enter your age in years: "))
+gender = input("Enter your gender (male/female): ")
+activity_level = input("Enter your activity level (sedentary, lightly_active, moderately_active, very_active, extremely_active): ")
+
+bmr = calculate_bmr(weight, height, age, gender)
+tdee = calculate_tdee(bmr, activity_level)
+
+print("Your BMR is: ", bmr)
+print("Your TDEE is: ", tdee)
+
